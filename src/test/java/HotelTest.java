@@ -13,11 +13,16 @@ public class HotelTest {
     private Guest guest2;
     private ArrayList<Guest> guestList;
     private Hotel hotel;
+    private Facility gym;
+    private Facility bar;
 
 
     @Before
     public void setUp() {
-        this.boudoir = new Bedroom(new Integer(1),new Integer(2),new Float(200.0),"Double");
+        this.gym = new Facility("Gym",20);
+        this.bar = new Facility("Hotel Bar", 30);
+        this.boudoir = new Bedroom(1,2, 200,"Double");
+        this.honeymoonSuite = new Bedroom(2,2,500,"Deluxe");
         this.guest1 = new Guest("Steve");
         this.guest2 = new Guest("Rob:");
         guestList = new ArrayList<>();
@@ -46,5 +51,18 @@ public class HotelTest {
         assertEquals(0, hotel.getBookings().size());
     }
 
+    @Test
+    public void canAddRoom() {
+        hotel.addRoom(honeymoonSuite);
+        assertEquals(1, hotel.getBedrooms().size());
+        assertEquals(honeymoonSuite, hotel.getBedrooms().get(0));
+    }
 
+    @Test
+    public void canAddFacility() {
+        hotel.addFacility(bar);
+        hotel.addFacility(gym);
+        assertEquals(2,hotel.getFacilities().size());
+    }
 }
+

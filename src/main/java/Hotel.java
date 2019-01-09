@@ -29,4 +29,14 @@ public class Hotel {
     public ArrayList<Booking> getBookings() {
         return bookings;
     }
+
+    public void addRoom(Bedroom room) {
+        this.bedrooms.add(room);
+    }
+
+    public void addFacility(Facility facility) {
+        this.facilities.add(facility);
+    }
+
+
 }
