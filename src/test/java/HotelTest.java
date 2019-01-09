@@ -64,5 +64,38 @@ public class HotelTest {
         hotel.addFacility(gym);
         assertEquals(2,hotel.getFacilities().size());
     }
+
+    @Test
+    public void canGetVacantRooms() {
+        hotel.addRoom(honeymoonSuite);
+        hotel.addRoom(boudoir);
+        assertEquals(2, hotel.getVacantRooms().size());
+    }
+
+    @Test
+    public void canCheckInGuest() {
+        hotel.addRoom(boudoir);
+        hotel.checkInGuests(boudoir, guestList);
+        assertEquals(true, boudoir.isOccupied());
+
+    }
+
+    @Test
+    public void canNotCheckInGuestOverCapacity() {
+        Guest third = new Guest("Paul");
+        guestList.add(third);
+        hotel.addRoom(boudoir);
+        hotel.checkInGuests(boudoir, guestList);
+        assertEquals(false, boudoir.isOccupied());
+    }
+
+    @Test
+    public void vacantRoomsGoesDownAfterCheckin() {
+        hotel.addRoom(honeymoonSuite);
+        hotel.addRoom(boudoir);
+        hotel.checkInGuests(boudoir, guestList);
+        assertEquals(1, hotel.getVacantRooms().size());
+    }
+
 }
 

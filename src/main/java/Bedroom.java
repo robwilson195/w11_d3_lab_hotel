@@ -41,8 +41,10 @@ public class Bedroom {
 	}
 
 	public void addGuestsToRoom(ArrayList<Guest> guestList) {
-		for (Guest guest : guestList) {
-			this.guests.add(guest);
+		if (guestList.size()<=this.capacity && !isOccupied()) {
+			for (Guest guest : guestList) {
+				this.guests.add(guest);
+			}
 		}
 	}
 

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class Hotel {
     private String name;
@@ -39,4 +40,17 @@ public class Hotel {
     }
 
 
+    public ArrayList<Bedroom> getVacantRooms() {
+        ArrayList available = new ArrayList<Bedroom>();
+        for (Bedroom room : this.bedrooms) {
+            if (!room.isOccupied()) {
+                available.add(room);
+            }
+        }
+        return available;
+    }
+
+    public void checkInGuests(Bedroom bedroom, ArrayList<Guest> guests) {
+        bedroom.addGuestsToRoom(guests);
+    }
 }
