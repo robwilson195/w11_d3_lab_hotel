@@ -50,7 +50,11 @@ public class Hotel {
         return available;
     }
 
-    public void checkInGuests(Bedroom bedroom, ArrayList<Guest> guests) {
-        bedroom.addGuestsToRoom(guests);
+    public Booking checkInGuests(Bedroom bedroom, ArrayList<Guest> guests) {
+        int added = bedroom.addGuestsToRoom(guests);
+        if (added >0 ) {
+            return new Booking(bedroom, guests, 7);
+        }
+        return null;
     }
 }

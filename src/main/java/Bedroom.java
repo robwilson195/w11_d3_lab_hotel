@@ -40,12 +40,15 @@ public class Bedroom {
 		return this.guests.size() > 0;
 	}
 
-	public void addGuestsToRoom(ArrayList<Guest> guestList) {
+	public int addGuestsToRoom(ArrayList<Guest> guestList) {
+		int added = 0;
 		if (guestList.size()<=this.capacity && !isOccupied()) {
 			for (Guest guest : guestList) {
 				this.guests.add(guest);
+				added += 1;
 			}
 		}
+		return added;
 	}
 
 	public ArrayList<Guest> removeGuestsFromRoom() {
