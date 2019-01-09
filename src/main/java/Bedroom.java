@@ -35,4 +35,20 @@ public class Bedroom {
 	public ArrayList<Guest> getGuests() {
 		return guests;
 	}
+
+	public boolean isOccupied() {
+		return this.guests.size() > 0;
+	}
+
+	public void addGuestsToRoom(ArrayList<Guest> guestList) {
+		for (Guest guest : guestList) {
+			this.guests.add(guest);
+		}
+	}
+
+	public ArrayList<Guest> removeGuestsFromRoom() {
+		ArrayList<Guest> leavingGuests = new ArrayList<>(this.guests);
+		this.guests.clear();
+		return leavingGuests;
+	}
 }
